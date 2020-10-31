@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "chatscrum"
+    }
+  },
+  "defaultProject": "chatscrum",
+  "cli": {
+    "analytics": "547cefa8-3c9f-49ab-96d8-4f46e787112d"
+  }
 }

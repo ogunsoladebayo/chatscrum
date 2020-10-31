@@ -1,0 +1,47 @@
+<h5>Sign Up</h5>
+<div class="col-sm-4">
+    <form class="form" #form="ngForm" [formGroup]="signupForm" (ngSubmit)="onSubmit(form.value)">
+      <div class="form-group">
+        <label for="fullname">Full Name:</label>
+        <input class="form-control" [ngClass]="{'is-invalid': f.fullname.dirty && f.fullname.errors}" [formControlName]="'fullname'" type="text">
+      </div>
+        <div *ngIf="f.fullname.errors && (f.fullname.dirty || f.fullname.touched)">
+          <div *ngIf="f.fullname.errors.required">Project name is required</div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input class="form-control" [ngClass]="{'is-invalid': f.email.touched && f.email.errors}" [formControlName]="'email'" type="email">
+        </div>
+        <div *ngIf="f.email.errors && (f.email.dirty || f.email.touched)">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.email">Invalid email address</div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input class="form-control" [ngClass]="{'is-invalid': f.password.dirty && f.password.errors}" [formControlName]="'password'" type="password">
+        </div>
+        <div *ngIf="f.password.errors && (f.password.dirty || f.password.touched)">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.password.errors.pattern">Password must be a minimum of 8 characters long and must have at least one uppercase and special character</div>
+        </div>
+        <div class="form-group">
+          <label for="usertype">User Type:</label>
+          <select class="form-control" [ngClass]="{'is-invalid': f.usertype.dirty && f.usertype.errors}" [formControlName]="'usertype'" (change)="changeType($event)">
+            <option *ngFor="let usertype of usertypes">{{usertype}}</option>
+          </select>
+      </div>
+      <div *ngIf="f.projname.errors && (f.projname.dirty || f.projname.touched)">
+          <div *ngIf="f.projname.errors.required">Project name is required</div>
+      </div>
+
+        <div class="form-group" *ngIf="f.usertype.value=='Owner'">
+            <label for="projectname">Project Name:</label>
+            <input class="form-control" [ngClass]="{'is-invalid': f.projname.dirty && f.projname.errors}" [formControlName]="'projname'" type="text">
+        </div>
+        <div *ngIf="f.projname.errors && (f.projname.dirty || f.projname.touched)">
+            <div *ngIf="f.projname.errors.required">Project name is required</div>
+        </div>
+
+        <input class="btn btn-primary" type="submit">
+    </form>
+</div>
