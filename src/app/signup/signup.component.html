@@ -1,6 +1,6 @@
 <h5>Sign Up</h5>
 <div class="col-sm-4">
-    <form class="form" #form="ngForm" [formGroup]="signupForm" (ngSubmit)="onSubmit(form.value)">
+    <form class="form" #form="ngForm" [formGroup]="signupForm" (ngSubmit)="onSubmit( )">
       <div class="form-group">
         <label for="fullname">Full Name:</label>
         <input class="form-control" [ngClass]="{'is-invalid': f.fullname.dirty && f.fullname.errors}" [formControlName]="'fullname'" type="text">
@@ -43,5 +43,8 @@
         </div>
 
         <input class="btn btn-primary" type="submit" value="Submit">
+        <div *ngIf="feedback">
+          {{feedback}}
+        </div>
     </form>
 </div>
