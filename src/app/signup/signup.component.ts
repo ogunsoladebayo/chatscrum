@@ -34,15 +34,15 @@ export class SignupComponent implements OnInit {
 			usertype: ['', Validators.required],
 		});
 	}
+	constructor(
+		private fb: FormBuilder,
+		private _scrumdataService: ScrumdataService
+	) {}
 	changeType(e) {
 		this.f.usertype.setValue(e.target.value, {
 			onlySelf: true,
 		});
 	}
-	constructor(
-		private fb: FormBuilder,
-		private _scrumdataService: ScrumdataService
-	) {}
 	get f() {
 		return this.signupForm.controls;
 	}
