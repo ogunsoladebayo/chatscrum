@@ -1,6 +1,6 @@
 <h5>login</h5>
 <div class="col-sm-4">
-    <form class="form" #form="ngForm" [formGroup]="loginForm" (ngSubmit)="onSubmit(form.value)">
+    <form class="form" #form="ngForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label for="email">Email:</label>
             <input class="form-control" [ngClass]="{'is-invalid': f.email.touched && f.email.errors}" [formControlName]="'email'" type="email">
@@ -26,5 +26,8 @@
         </div>
 
         <input class="btn btn-primary" type="submit" value="Submit">
+        <div *ngIf="feedback">
+            {{feedback}}
+        </div>
     </form>
 </div>
