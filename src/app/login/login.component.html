@@ -1,4 +1,7 @@
 <h5>login</h5>
+<div>
+    <button class="btn btn-link"><a routerLink="/home" routerLinkActive="active">Homepage</a></button> |
+</div>
 <div class="col-sm-4">
     <form class="form" #form="ngForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
@@ -30,4 +33,7 @@
             {{feedback}}
         </div>
     </form>
+    <div>
+        New User? <button class="btn btn-link"><a routerLink="/signup" routerLinkActive="active">Signup</a></button>
+    </div>
 </div>
