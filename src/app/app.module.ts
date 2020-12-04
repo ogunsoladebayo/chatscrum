@@ -8,9 +8,17 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { ScrumboardComponent } from './scrumboard/scrumboard.component';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
-	declarations: [AppComponent, SignupComponent, LoginComponent, HomeComponent],
+	declarations: [
+		AppComponent,
+		SignupComponent,
+		LoginComponent,
+		HomeComponent,
+		ScrumboardComponent,
+	],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
@@ -18,7 +26,7 @@ import { HomeComponent } from './home/home.component';
 		ReactiveFormsModule,
 		HttpClientModule,
 	],
-	providers: [],
+	providers: [AuthGuard],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}

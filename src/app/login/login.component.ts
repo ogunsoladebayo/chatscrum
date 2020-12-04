@@ -6,6 +6,7 @@ import {
 	Validators,
 } from '@angular/forms';
 import { ScrumdataService } from '../scrumdata.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-login',
@@ -33,7 +34,8 @@ export class LoginComponent implements OnInit {
 	}
 	constructor(
 		private fb: FormBuilder,
-		private _scrumdataService: ScrumdataService
+		private _scrumdataService: ScrumdataService,
+		private _router: Router
 	) {}
 	get f() {
 		return this.loginForm.controls;
@@ -43,6 +45,8 @@ export class LoginComponent implements OnInit {
 			(data) => {
 				console.log('Success', data);
 				this.feedback = 'Login successful';
+				localStorage.setItem('token', data.token);
+				this._router.navigate(['/scrumboard']);
 			},
 			(error) => {
 				console.log('Error', error);

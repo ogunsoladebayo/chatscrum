@@ -39,4 +39,7 @@ export class ScrumdataService {
 			this.httpOptions
 		);
 	}
+	loggedIn() {
+		return !!localStorage.getItem('token');
+	}
 }
