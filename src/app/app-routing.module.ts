@@ -12,7 +12,7 @@ const routes: Routes = [
 	{ path: 'login', component: LoginComponent },
 	{ path: 'signup', component: SignupComponent },
 	{
-		path: 'scrumboard',
+		path: 'scrumboard/:project_id',
 		component: ScrumboardComponent,
 		canActivate: [AuthGuard],
 	},

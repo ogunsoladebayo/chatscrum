@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class ScrumdataService {
 	_signupUrl = 'https://liveapi.chatscrum.com/scrum/api/scrumusers/';
 	_loginUrl = 'https://liveapi.chatscrum.com/scrum/api-token-auth/';
+	_scrumProjectUrl = 'https://liveapi.chatscrum.com/scrum/api/scrumprojects/';
 
 	public httpOptions = {
 		headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -41,5 +42,12 @@ export class ScrumdataService {
 	}
 	loggedIn() {
 		return !!localStorage.getItem('token');
+	}
+
+	scrumProject(project_id) {
+		return this._http.get<any>(
+			this._scrumProjectUrl + project_id,
+			this.httpOptions
+		);
 	}
 }
