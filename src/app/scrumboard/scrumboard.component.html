@@ -1,1 +1,47 @@
-<p>scrumboard works!</p>
+<table *ngFor="let scrum_user of scrum_users" class="table">
+    <thead>
+        <h3><strong>{{ scrum_user['user']['nickname'] }}</strong></h3>
+        <tr>
+            <th scope="col">Tasks for the week</th>
+            <th scope="col">Tasks for the day</th>
+            <th scope="col">Verify</th>
+            <th scope="col">Done</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <div *ngFor="let goal of scrum_user['scrumgoal_set']">
+                    <div *ngIf="goal['status'] == 0">
+                        {{ goal['name'] }} <br>
+                        {{ goal['id'] }}
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div *ngFor="let goal of scrum_user['scrumgoal_set']">
+                    <div *ngIf="goal['status'] == 1">
+                        {{ goal['name'] }} <br>
+                        {{ goal['id'] }}
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div *ngFor="let goal of scrum_user['scrumgoal_set']">
+                    <div *ngIf="goal['status'] == 2">
+                        {{ goal['name'] }} <br>
+                        {{ goal['id'] }}
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div *ngFor="let goal of scrum_user['scrumgoal_set']">
+                    <div *ngIf="goal['status'] == 3">
+                        {{ goal['name'] }} <br>
+                        {{ goal['id'] }}
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

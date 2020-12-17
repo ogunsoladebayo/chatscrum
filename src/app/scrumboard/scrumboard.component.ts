@@ -9,6 +9,7 @@ import { ScrumdataService } from '../scrumdata.service';
 })
 export class ScrumboardComponent implements OnInit {
 	project_id = 0;
+	scrum_users: any
 
 	constructor(
 		private _route: ActivatedRoute,
@@ -26,6 +27,7 @@ export class ScrumboardComponent implements OnInit {
 		this._scrumdataService.scrumProject(this.project_id).subscribe(
 			(data) => {
 				console.log(data);
+				this.scrum_users = data['data']
 			},
 			(error) => {
 				console.log('error', error);
