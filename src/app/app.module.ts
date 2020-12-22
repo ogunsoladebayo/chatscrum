@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { ScrumboardComponent } from './scrumboard/scrumboard.component';
 import { AuthGuard } from './auth.guard';
+import { DragDropModule } from '@angular/cdk/drag-drop'
 
 @NgModule({
 	declarations: [
@@ -25,6 +26,7 @@ import { AuthGuard } from './auth.guard';
 		FormsModule,
 		ReactiveFormsModule,
 		HttpClientModule,
+		DragDropModule
 	],
 	providers: [AuthGuard],
 	bootstrap: [AppComponent],

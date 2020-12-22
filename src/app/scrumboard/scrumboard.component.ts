@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ScrumdataService } from '../scrumdata.service';
+import {
+	CdkDragDrop,
+	moveItemInArray,
+	transferArrayItem,
+} from '@angular/cdk/drag-drop';
 
 @Component({
 	selector: 'app-scrumboard',
@@ -9,7 +14,11 @@ import { ScrumdataService } from '../scrumdata.service';
 })
 export class ScrumboardComponent implements OnInit {
 	project_id = 0;
-	scrum_users: any
+	scrum_users: any;
+	public tftw: any[] = [];
+	public tftd: any[] = [];
+	public verify: any[] = [];
+	public done: any[] = [];
 
 	constructor(
 		private _route: ActivatedRoute,
@@ -27,11 +36,43 @@ export class ScrumboardComponent implements OnInit {
 		this._scrumdataService.scrumProject(this.project_id).subscribe(
 			(data) => {
 				console.log(data);
-				this.scrum_users = data['data']
+				this.scrum_users = data['data'];
+				for (let scrum_user of this.scrum_users) {
+					for (let goal of scrum_user['scrumgoal_set']) {
+						if (goal['status'] == 0) {
+							this.tftw.push(goal);
+						} else if (goal['status'] == 1) {
+							this.tftd.push(goal);
+						} else if (goal['status'] == 2) {
+							this.verify.push(goal);
+						} else {
+							this.done.push(goal);
+						}
+					}
+				}
+				console.log(this.tftw);
 			},
 			(error) => {
 				console.log('error', error);
 			}
 		);
+	}
+
+	drop(event: CdkDragDrop<string[]>) {
+		if (event.previousContainer === event.container) {
+			moveItemInArray(
+				event.container.data,
+				event.previousIndex,
+				event.currentIndex
+			);
+		} else {
+			transferArrayItem(
+				event.previousContainer.data,
+				event.container.data,
+				event.previousIndex,
+				event.currentIndex
+			);
+			console.log(this.tftd);
+		}
 	}
 }
