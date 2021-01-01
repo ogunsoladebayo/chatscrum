@@ -5,6 +5,7 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { ScrumboardComponent } from './scrumboard/scrumboard.component';
 import { AuthGuard } from './auth.guard';
+import { ChatComponent } from './chat/chat.component';
 
 const routes: Routes = [
 	{ path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -16,6 +17,7 @@ const routes: Routes = [
 		component: ScrumboardComponent,
 		canActivate: [AuthGuard],
 	},
+	{ path: 'chat', component: ChatComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

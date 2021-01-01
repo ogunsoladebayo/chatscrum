@@ -10,7 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { ScrumboardComponent } from './scrumboard/scrumboard.component';
 import { AuthGuard } from './auth.guard';
-import { DragDropModule } from '@angular/cdk/drag-drop'
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ChatComponent } from './chat/chat.component'
 
 @NgModule({
 	declarations: [
@@ -19,6 +20,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop'
 		LoginComponent,
 		HomeComponent,
 		ScrumboardComponent,
+		ChatComponent,
 	],
 	imports: [
 		BrowserModule,

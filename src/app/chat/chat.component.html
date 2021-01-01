@@ -1,0 +1,85 @@
+<!-- <div class="col-md-8 col-xl-6 chat">
+    <div class="card">
+        <div class="card-header msg_head">
+            <span>Scrum Chat</span>
+            <p>Messages</p>
+        </div>
+        <div class="card-body msg_card_body" id="chatlog">
+            <div>
+                <div class="d-flex justify-content-start mb-4">
+                    <div class="img_cont_msg">
+                        <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" alt="image" class="rounded-circle user_img_msg">
+                    </div>
+                    <div class="msg_container">
+                        <strong>John:</strong> &nbsp; Hi, how are you all today?
+                        <span class="msg_time">4:03 PM</span>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-start mb-4">
+                    <div class="img_cont_msg">
+                        <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" alt="image" class="rounded-circle user_img_msg">
+                    </div>
+                    <div class="msg_container">
+                        <strong>Jane:</strong> &nbsp; Hi John, I am good. what about you?
+                        <span class="msg_time">4:06 PM</span>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end mb-4">
+                    <div class="msg_container_send">
+                        Hello guys...
+                        <span class="msg_time_send">4:07 PM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <form #sendForm = "ngForm">
+                <div class="input-group">
+                    <textarea name="chat_text" class="form-control type_msg" placeholder="Type your message..." ngModel></textarea>
+                    <div class="input-group-append" (click)="sendMessage(sendForm)">
+                        <span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> -->
+
+
+<div class="col-md-8 col-xl-6 chat">
+    <div class="card">
+        <div class="card-header msg_head">
+            <span>Scrum Chat</span>
+            <p>Messages</p>
+        </div>
+        <div class="card-body msg_card_body" id="chatlog">
+                <div *ngFor="let message of webSocketService.messageData">
+                    <div class="d-flex justify-content-start mb-4" *ngIf= "message.username !== username">
+                        <div class="img_cont_msg">
+                            <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" alt="" class="rounded-circle user_img_msg">
+                        </div>
+                        <div class="msg_container">
+                            <b>{{message.username}}:</b> &nbsp; {{message.message}}
+                            <span class="msg_time">{{message.timestamp}}</span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end mb-4" *ngIf= "message.username == username">
+                        <div class="msg_container_send">
+                            {{message.message}}
+                            <span class="msg_time_send">{{message.timestamp}}</span>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="card-footer">
+            <form #sendForm = "ngForm">
+                <div class="input-group">
+                    <textarea name="chat_text" class="form-control type_msg" placeholder="Type your message..." ngModel></textarea>
+                    <div class="input-group-append" (click)="sendMessage(sendForm)">
+                        <span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
